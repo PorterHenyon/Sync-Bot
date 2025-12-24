@@ -74,10 +74,31 @@ This is a **step-by-step guide** with exact instructions on how to add your Disc
      https://discord.com/api/oauth2/authorize?client_id=123456789&permissions=268435456&scope=bot
      ```
    - Click the **"Copy"** button next to the URL
-   - ⚠️ **If you don't see a URL:**
-     - Make sure you checked the `bot` scope (Step 2)
-     - Try scrolling down more - it's at the very bottom
-     - Refresh the page and try again
+   - ⚠️ **If the URL is blank or asks for redirect URI:**
+     - See "Alternative: Manual URL Generation" section below
+     - Or try setting a dummy redirect URI (see troubleshooting)
+
+### Alternative: Manual URL Generation
+
+If the URL Generator isn't working, you can create the URL manually:
+
+1. **Get your Client ID:**
+   - Go to **"General Information"** (left sidebar, under your app name)
+   - Find **"APPLICATION ID"** - this is your Client ID
+   - Copy this number
+
+2. **Calculate Permissions:**
+   - Use this permission calculator: https://discordapi.com/permissions.html
+   - Or use this value: `268435456` (Manage Roles permission)
+   - For full permissions: `268446720` (Manage Roles + View Channels + Read Message History + Send Messages)
+
+3. **Build the URL:**
+   - Replace `YOUR_CLIENT_ID` with your Application ID
+   - Replace `PERMISSIONS` with the permission number
+   - Format: `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=PERMISSIONS&scope=bot`
+   - Example: `https://discord.com/api/oauth2/authorize?client_id=123456789012345678&permissions=268435456&scope=bot`
+
+4. **Use this URL** to add your bot to servers (same as Step 4 below)
 
 ---
 
@@ -225,6 +246,21 @@ Before deploying to Railway, make sure you have:
 - ✅ **Make sure you've created the bot first:**
   - Go to "Bot" section → Click "Add Bot" if you haven't
   - Then go back to OAuth2 → URL Generator
+
+### "Generated URL is blank / asks for redirect URI"
+- ❌ **Discord interface bug or change** - this shouldn't happen for bot installation
+- ✅ **Solution 1: Use Manual URL Generation** (see "Alternative" section above)
+- ✅ **Solution 2: Set a dummy redirect URI:**
+  1. Go to OAuth2 → **General** (not URL Generator)
+  2. Under "Redirects", click **"Add Redirect"**
+  3. Enter: `http://localhost` (this is just a placeholder)
+  4. Click **"Add"**
+  5. Go back to OAuth2 → **URL Generator**
+  6. The URL should now generate
+- ✅ **Solution 3: Build URL manually** (most reliable):
+  - Get your Application ID from "General Information"
+  - Use permission value: `268435456` (or calculate at https://discordapi.com/permissions.html)
+  - Build URL: `https://discord.com/api/oauth2/authorize?client_id=YOUR_APP_ID&permissions=268435456&scope=bot`
 
 ---
 
