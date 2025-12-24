@@ -47,6 +47,8 @@ This is a **step-by-step guide** with exact instructions on how to add your Disc
 
 1. **In the left sidebar, click "OAuth2"**
    - Then click **"URL Generator"** (under OAuth2)
+   - ⚠️ **IMPORTANT:** You're using "URL Generator", NOT "General" or "Redirects"
+   - If you see an error about URIs, you're in the wrong section - make sure you clicked "URL Generator"
 
 2. **Select Scopes (checkboxes)**
    - Under **"SCOPES"**, check:
@@ -190,6 +192,16 @@ Before deploying to Railway, make sure you have:
 - Make sure you copied the full URL
 - Try generating a new one in OAuth2 → URL Generator
 - Make sure you selected the `bot` scope
+
+### "You must specify at least one URI for authentication to work"
+- ❌ **You're in the wrong section!** This error appears in OAuth2 → General
+- ✅ **Solution:** Go to OAuth2 → **URL Generator** instead
+- The URL Generator doesn't require redirect URIs - that's only for OAuth2 authentication flows
+- **Steps to fix:**
+  1. In the left sidebar, click **"OAuth2"**
+  2. Make sure you click **"URL Generator"** (NOT "General" or "Redirects")
+  3. You should see checkboxes for "SCOPES" and "BOT PERMISSIONS"
+  4. If you see a field asking for "Redirects" or "URIs", you're in the wrong place!
 
 ---
 
