@@ -50,25 +50,34 @@ This is a **step-by-step guide** with exact instructions on how to add your Disc
    - ⚠️ **IMPORTANT:** You're using "URL Generator", NOT "General" or "Redirects"
    - If you see an error about URIs, you're in the wrong section - make sure you clicked "URL Generator"
 
-2. **Select Scopes (checkboxes)**
-   - Under **"SCOPES"**, check:
-     - ✅ **`bot`** (this is required!)
-     - ✅ `applications.commands` (optional, for slash commands)
+2. **Select Scopes (checkboxes) - THIS IS REQUIRED!**
+   - Under **"SCOPES"**, you MUST check:
+     - ✅ **`bot`** (this is REQUIRED - the URL won't generate without this!)
+   - Optional:
+     - ✅ `applications.commands` (for slash commands, not needed for this bot)
+   - ⚠️ **The URL will NOT appear until you check the `bot` scope!**
 
 3. **Select Bot Permissions**
-   - Scroll down to **"BOT PERMISSIONS"**
+   - Scroll down to **"BOT PERMISSIONS"** section
    - Check these boxes:
      - ✅ **Manage Roles** (REQUIRED - most important!)
      - ✅ View Channels
      - ✅ Read Message History
      - ✅ Send Messages (optional, for command responses)
+   - ⚠️ **Note:** You can select permissions, but the URL will generate even with just the `bot` scope
 
-4. **Copy the Generated URL**
-   - At the bottom, you'll see a box with a URL that looks like:
+4. **Find the Generated URL**
+   - Scroll all the way to the **BOTTOM** of the page
+   - You'll see a section called **"Generated URL"** or **"SCOPED URL"**
+   - There will be a long URL in a box that looks like:
      ```
      https://discord.com/api/oauth2/authorize?client_id=123456789&permissions=268435456&scope=bot
      ```
-   - Click **"Copy"** button next to the URL
+   - Click the **"Copy"** button next to the URL
+   - ⚠️ **If you don't see a URL:**
+     - Make sure you checked the `bot` scope (Step 2)
+     - Try scrolling down more - it's at the very bottom
+     - Refresh the page and try again
 
 ---
 
@@ -202,6 +211,20 @@ Before deploying to Railway, make sure you have:
   2. Make sure you click **"URL Generator"** (NOT "General" or "Redirects")
   3. You should see checkboxes for "SCOPES" and "BOT PERMISSIONS"
   4. If you see a field asking for "Redirects" or "URIs", you're in the wrong place!
+
+### "I don't see a generated URL / URL won't generate"
+- ✅ **Make sure you checked the `bot` scope!** This is REQUIRED
+  - Under "SCOPES", you MUST check the `bot` checkbox
+  - The URL will NOT appear until you do this
+- ✅ **Scroll all the way down** - the URL is at the very bottom of the page
+- ✅ **Check you're in the right place:**
+  - Should be: OAuth2 → URL Generator
+  - NOT: OAuth2 → General
+  - NOT: OAuth2 → Redirects
+- ✅ **Try refreshing the page** after checking the `bot` scope
+- ✅ **Make sure you've created the bot first:**
+  - Go to "Bot" section → Click "Add Bot" if you haven't
+  - Then go back to OAuth2 → URL Generator
 
 ---
 
