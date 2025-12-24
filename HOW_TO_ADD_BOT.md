@@ -28,14 +28,21 @@ This is a **step-by-step guide** with exact instructions on how to add your Disc
    - A popup will appear asking "Do you want to add a bot to this application?"
    - Click **"Yes, do it!"**
 
-3. **Enable Server Members Intent**
+3. **IMPORTANT: Disable OAuth2 Code Grant**
+   - Scroll down on the Bot page
+   - Find **"Require OAuth2 Code Grant"**
+   - Make sure this is **OFF/UNCHECKED** (toggle should be gray/disabled)
+   - ⚠️ **If this is ON, you'll get "integration requires code grant" error!**
+   - This setting is usually near the "Public Bot" toggle
+
+4. **Enable Server Members Intent**
    - Scroll down on the Bot page
    - Find the section called **"Privileged Gateway Intents"**
    - Look for **"SERVER MEMBERS INTENT"** (or "MEMBERS INTENT")
    - **Toggle it ON** (switch should be blue/enabled)
    - A warning will appear - click **"Yes"** to confirm
 
-4. **Save Your Bot Token**
+5. **Save Your Bot Token**
    - Above the intents section, you'll see **"Token"**
    - Click **"Reset Token"** or **"Copy"** button
    - **SAVE THIS TOKEN** - you'll need it for Railway!
@@ -212,6 +219,15 @@ Before deploying to Railway, make sure you have:
 - Make sure bot's role is **above** the roles it needs to assign
 - Check that "Manage Roles" permission is enabled
 - Verify bot's role has "Manage Roles" permission enabled
+
+### "Integration requires code grant to add it to the server"
+- ❌ **"Require OAuth2 Code Grant" is enabled!**
+- ✅ **Solution:**
+  1. Go to **"Bot"** section in Developer Portal
+  2. Scroll down to find **"Require OAuth2 Code Grant"**
+  3. **Turn it OFF** (toggle should be gray/unchecked)
+  4. Try the invite URL again
+- ⚠️ **This setting makes bot installation more complex - keep it OFF for easy installation**
 
 ### "I can't find Server Members Intent"
 - Make sure you clicked "Add Bot" first
