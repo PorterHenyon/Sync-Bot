@@ -7,30 +7,34 @@ A Discord bot that automatically syncs roles from your Patreon Discord server to
 - 🔄 Automatic role syncing when members join or roles change
 - 🎯 Configurable role mappings between servers
 - 📊 Status and manual sync commands
-- 🚀 Ready for Railway deployment
+- 🚀 Optimized for Railway deployment
+- 🛡️ Robust error handling and auto-reconnection
+
+## 📖 Quick Start
+
+**New to Discord bots?** Start here: **[HOW_TO_ADD_BOT.md](HOW_TO_ADD_BOT.md)** - Complete step-by-step guide with exact instructions!
 
 ## Setup Instructions
 
-### 1. Create a Discord Bot
+### 1. Create and Add Discord Bot
 
-1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
-2. Click "New Application" and give it a name
-3. Go to the "Bot" section
-4. Click "Add Bot" and confirm
-5. Under "Privileged Gateway Intents", enable:
-   - ✅ Server Members Intent
-   - ✅ Message Content Intent (if needed)
-6. Copy the bot token (you'll need this later)
-7. Go to "OAuth2" → "URL Generator"
-8. Select scopes:
-   - ✅ `bot`
-   - ✅ `applications.commands`
-9. Select bot permissions:
-   - ✅ Manage Roles
-   - ✅ View Channels
-   - ✅ Read Message History
-10. Copy the generated URL and open it in your browser
-11. Add the bot to **both** your Patreon server and Main server
+**👉 Follow the detailed guide: [HOW_TO_ADD_BOT.md](HOW_TO_ADD_BOT.md)**
+
+This guide includes:
+- Step-by-step instructions with exact button locations
+- How to enable Server Members Intent
+- How to generate the invite URL
+- How to add bot to both servers
+- How to set up role hierarchy
+- Troubleshooting tips
+
+**Quick summary:**
+1. Create bot at https://discord.com/developers/applications
+2. Enable "SERVER MEMBERS INTENT" in Bot settings
+3. Copy bot token (save for Railway)
+4. Generate invite URL in OAuth2 → URL Generator
+5. Add bot to both Patreon and Main servers
+6. Position bot's role above roles to sync
 
 ### 2. Get Server IDs
 
@@ -44,44 +48,63 @@ A Discord bot that automatically syncs roles from your Patreon Discord server to
 2. Format: `PatreonRoleName:MainRoleName`
 3. Example: If you have "Patreon Supporter" in Patreon server and "Supporter" in Main server, use: `Patreon Supporter:Supporter`
 
-### 4. Railway Deployment
+### 4. Railway Deployment (Optimized)
 
-#### Option A: Deploy via Railway CLI
+#### Recommended: Deploy via GitHub
 
-1. Install Railway CLI:
+1. **Push to GitHub** (if not already done)
    ```bash
-   npm i -g @railway/cli
+   git add .
+   git commit -m "Ready for Railway deployment"
+   git push
    ```
 
-2. Login to Railway:
-   ```bash
-   railway login
-   ```
+2. **Go to Railway**
+   - Visit: https://railway.app
+   - Sign up/login (can use GitHub account)
 
-3. Initialize project:
-   ```bash
-   railway init
-   ```
+3. **Create New Project**
+   - Click **"New Project"**
+   - Select **"Deploy from GitHub repo"**
+   - Authorize Railway to access your GitHub
+   - Select your **Sync-Bot** repository
+   - Railway will automatically detect Python and start building
 
-4. Add environment variables in Railway dashboard:
-   - `DISCORD_BOT_TOKEN` - Your bot token
-   - `PATREON_GUILD_ID` - Patreon server ID
-   - `MAIN_GUILD_ID` - Main server ID
-   - `SYNC_ROLES` - Role mappings (comma-separated, format: `Role1:Role1, Role2:Role2`)
+4. **Add Environment Variables**
+   - In your Railway project, click on the service
+   - Go to **"Variables"** tab
+   - Click **"New Variable"** and add each:
+     
+     **Required Variables:**
+     ```
+     DISCORD_BOT_TOKEN=your_bot_token_here
+     PATREON_GUILD_ID=123456789012345678
+     MAIN_GUILD_ID=987654321098765432
+     SYNC_ROLES=Patreon Supporter:Supporter, Patreon VIP:VIP
+     ```
+     
+     **Format for SYNC_ROLES:**
+     - `PatreonRoleName:MainRoleName`
+     - Separate multiple with commas: `Role1:Role1, Role2:Role2`
+     - No spaces around colons (or be consistent)
 
-5. Deploy:
-   ```bash
-   railway up
-   ```
+5. **Deploy**
+   - Railway will automatically deploy when you add variables
+   - Watch the **"Deployments"** tab for build progress
+   - Check **"Logs"** tab to see bot startup messages
 
-#### Option B: Deploy via GitHub
+6. **Verify Bot is Running**
+   - Check Railway logs - you should see: `✅ Bot logged in as: YourBotName`
+   - Bot should appear online in Discord
+   - Use `!status` command in Discord to verify
 
-1. Push this repository to GitHub
-2. Go to [Railway](https://railway.app)
-3. Click "New Project" → "Deploy from GitHub repo"
-4. Select your repository
-5. Add environment variables in Railway dashboard (same as above)
-6. Railway will automatically deploy
+#### Railway Optimizations Included
+
+- ✅ Auto-reconnection on network issues
+- ✅ Optimized logging for Railway's log viewer
+- ✅ Better error handling and recovery
+- ✅ Health monitoring ready
+- ✅ Graceful shutdown handling
 
 ### 5. Environment Variables
 
